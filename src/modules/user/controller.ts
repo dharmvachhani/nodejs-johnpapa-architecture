@@ -1,7 +1,8 @@
 import { NextFunction, Request, Response } from "express"
 import createHttpError = require("http-errors");
 import { UserRepository } from "./repository"
-
+import { UserService } from "./service";
+const userService = new UserService();
 export class UserController {
 
     async all(request: Request, response: Response, next: NextFunction) {
@@ -16,7 +17,7 @@ export class UserController {
 
     async one(request: Request, response: Response, next: NextFunction) {
         const id: any = request.params.id;
-        const user = await UserRepository.findOne(id)
+        const user = await userService.one(id)
         response.json(user);
     }
 

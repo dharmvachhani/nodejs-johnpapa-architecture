@@ -11,6 +11,6 @@ export const db = new DataSource({
     synchronize: true,
     logging: true,
     entities: ["src/**/entity.ts"],
-    migrations: [],
+    migrations: ["src/migration/*.ts"],
     subscribers: [],
 })
